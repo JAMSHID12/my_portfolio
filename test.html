@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View More Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Limit the initial height of the content */
+        .content {
+            overflow: hidden;
+            max-height: 60px; /* Adjust this to control how much content is initially visible */
+            transition: max-height 0.3s ease-out;
+        }
+
+        /* When content is expanded */
+        .content.expanded {
+            max-height: 500px; /* Set this to a high value to ensure all content is shown */
+        }
+
+        /* Style the View More button */
+        .view-more-btn {
+            background-color: transparent;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .view-more-btn:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 text-center animate-box">
+                <div class="services color-5">
+                    <span class="icon">
+                        <i class="icon-data"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>State Management and Architecture</h3>
+                        <p class="content">
+                            I am skilled in using design patterns such as MVC and BLoC for structuring
+                            applications. In a Flutter project, I implemented BLoC for state management,
+                            which resulted in a more maintainable codebase and smoother user experience.
+                        </p>
+                        <button class="view-more-btn">View More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+
+            viewMoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.previousElementSibling; // The paragraph element
+                    content.classList.toggle('expanded');
+
+                    if (content.classList.contains('expanded')) {
+                        this.textContent = 'View Less';
+                    } else {
+                        this.textContent = 'View More';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
